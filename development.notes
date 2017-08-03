@@ -1,0 +1,45 @@
+-------------------- {
+What will create new tabs/windows?
+What will navigate around the tabs in the current window?
+What will close/restore tabs?
+...
+What are the listeners for each of these behaviors?
+
+
+Ctrl + LINK = New Background Tab
+Shift + Ctrl + LINK = New Foreground Tab **
+Shift + LINK = New Foreground Tab in a New Window **
+
+Right Click + LINK Menu = New Background Tab
+Right Click + LINK Menu = New Foreground Tab in a New Window **
+Right Click + LINK Menu = Foreground Tab in a New Incognito Window ** ^ ~
+
+New Tab Header Button = New Foreground Tab **
+Right Click Header Menu = New Foreground Tab **
+Right Click Header Menu = RESTORE Foreground Tab ** ^
+
+Dots Menu Button = New Foreground Tab **
+Dots Menu Button = New Foreground Tab in a New Window **
+Dots Menu Button = Foreground Tab in a New Incognito Window ** ^ ~
+
+CTRL + T = New Foreground Tab **
+CTRL + N = New Foreground Tab in a New Window **
+CTRL + SHIFT + T = RESTORE Foreground Tab ** ^
+CTRL + SHIFT + N = Foreground Tab in a New Incognito Window ** ^ ~
+CTRL + W = Close Tab **
+CTRL + Tab = Change Tab Focus Forward **
+CTRL + SHIFT + Tab = Change Tab Focus Backward **
+
+FINISHED LISTING OPTIONS
+
+NOW WE MUST DETERMINE BEHAVIOR OF EACH ONE, as in, WHAT LISTENERS WILL FIRE? AM I USING THE RIGHT ONES? LOOK EM UP!
+
+** = Tab Focus Change
+^ = No development has been made for tab restoration, only closing. This will trigger a new tab thing completely (or will it?)
+~ = Incognito
+
+..............
+record closing a tab...
+record the possibility of restoring that tab...
+}
+

@@ -176,8 +176,6 @@ const openTabOrigin = (tab) => {
 /*
  TO DO THINGS HERE:
 
- urlNavigationHistory: [], // ***** add the url here. // STILL NEED TO ADD ONE HERE
-
   Change Focus Problem:
  // This is partially broken, when I do an ctrl+t and open a new tab that immediately bounces into the foreground,
  // The tabs don't update! But when I close it down it does update...
@@ -219,7 +217,14 @@ chrome.tabs.onCreated.addListener(function (tab) {
       tabId: tab.id,
       creationTime: thisTabCreationTime,
       removeTime: "",
-      urlNavigationHistory: [], // ***** add the url here. // STILL NEED TO ADD ONE HERE
+      urlNavigationHistory: [
+        {
+          "url": tab.url,
+          "title": tab.title,
+          "favIconUrl": tab.favIconUrl,
+          "creationTime": thisTabCreationTime
+        }
+      ],
       nodeActivity: [],
       parentNode: {
         windowId: match.windowId,
