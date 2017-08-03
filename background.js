@@ -192,9 +192,9 @@ const openTabOrigin = (tab) => {
       New problem spaces...
         Schema: Include root tabs and pinned tabs now somehow.
 
-  Earn that blowjob from my wifey queen cause I've been really productive at coding! EARN MY REWARD!!
-
   Clean up code + First Commit
+
+  Add Closing and Restoring with sessionId from sessions. This is not small.
 
  */
 

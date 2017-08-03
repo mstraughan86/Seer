@@ -5,6 +5,10 @@ What will close/restore tabs?
 ...
 What are the listeners for each of these behaviors?
 
+...
+http://www.wikihow.com/Open-a-Page-in-a-New-Window
+https://support.google.com/chrome/answer/157179?hl=en
+...
 
 Ctrl + LINK = New Background Tab
 Shift + Ctrl + LINK = New Foreground Tab **
@@ -39,7 +43,7 @@ NOW WE MUST DETERMINE BEHAVIOR OF EACH ONE, as in, WHAT LISTENERS WILL FIRE? AM 
 ~ = Incognito
 
 ..............
-record closing a tab...
-record the possibility of restoring that tab...
+
+When recording closing a tab, store the sessionId so that we can restore it later. Shoot sun, that means I have to rename sessionId as well.
 }
 
