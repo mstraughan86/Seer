@@ -196,6 +196,8 @@ const openTabOrigin = (tab) => {
 
   Add Closing and Restoring with sessionId from sessions. This is not small.
 
+  Add catch code to the end of my promise chains. I have a link somewhere with bad/best practices for promises.
+  https://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html
  */
 
 // This fires when a tab is created!
