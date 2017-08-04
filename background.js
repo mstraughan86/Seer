@@ -26,15 +26,13 @@
  scroll logging % per url and active time spent per url should be in the visual tree
 
  */
-console.log('-- BEGIN-----------------------');
-console.log('Tab Origin Plus - background.js');
-console.log('-------------------------------');
-//http://www.jsonschemavalidator.net/
+console.log('-- BEGIN-------------- I see all --');
 
-let activeTabList = [{"windowId": "default", "tabId": "default"}];
+const activeTabList = [{"windowId": "default", "tabId": "default"}];
 const now = new Date().getTime();
-const sessionId = '1++' + now;
+const sessionId = '1++' + (new Date().getTime());
 
+//http://www.jsonschemavalidator.net/
 const dataSchema = {
   "$schema": "http://json-schema.org/schema#",
   //"id": "http://yourdomain.com/schemas/myschema.json",
@@ -128,6 +126,33 @@ const isThisArrayNull = (array) => {return !!array.length};
 const getLastElement = (array) => {return array[array.length - 1]};
 const getCurrentTime = () => {return Math.floor(new Date() / 1000);}; // This is current time in seconds since Epoch
 
+
+/*
+SOLUTION TO ROOT NODES
+SOLUTION TO MISSING DATA ON LOAD + SUBSEQUENT GENERATION OF ERRORS
+
+DOES NOT SOLVE WEIRD NOTES IN DEVELOPMENT.NOTES
+
+~~~~~
+ https://developer.chrome.com/extensions/runtime#event-onStartup
+ chrome.runtime.onStartup.addListener(function callback)
+
+ Almost better yet, simply do a promise chain right here.
+
+ get all tabs in window in a list
+ iterate over list
+ create tabs for each one
+ save
+ find active current tab
+ update data
+
+ ...
+
+ rest.
+
+ */
+
+
 // Open the origin url of the given tab.
 const openTabOrigin = (tab) => {
 
@@ -192,12 +217,8 @@ const openTabOrigin = (tab) => {
       New problem spaces...
         Schema: Include root tabs and pinned tabs now somehow.
 
-  Clean up code + First Commit
-
   Add Closing and Restoring with sessionId from sessions. This is not small.
 
-  Add catch code to the end of my promise chains. I have a link somewhere with bad/best practices for promises.
-  https://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html
  */
 
 // This fires when a tab is created!
@@ -261,13 +282,10 @@ chrome.tabs.onCreated.addListener(function (tab) {
   ////BELOW IS CODE FOR TAB CREATION TRACKING PURPOSES.
   ////CLEAN UP AND FIGURE OUT PROPER CONSOLE OUT STATEMENTS.
   // This tab has been opened from another tab!
-  if (tab.openerTabId !== undefined) {
 
-    // get 'match' tab based on the openerTabId
+  if (tab.openerTabId !== undefined) {
     chrome.tabs.get(tab.openerTabId, function (match) {
-      // if this exists...
       if (match !== undefined) {
-        // learning portion removed. rest is here for learning?
       } else {
         // if below else is encountered, that tab that was undefined will trigger this.
         console.log("Could not find opener for tab " + tab.url);
@@ -275,9 +293,6 @@ chrome.tabs.onCreated.addListener(function (tab) {
     });
   } else {
     // I can reliably get to this point if i CTRL Click open a new tab from the new tab (no url) page
-
-    // This is a root page!
-
     // ACTUALLY AND ALSO! This is also a side effect of the mechanism from the openTabOrigin
     // chrome.tabs.create({url: dest, index: tab.index}, function(newtab) {
     console.log("ㅠㅠ Undefined opener for tab " + tab.url + " ㅠㅠ");
@@ -311,7 +326,7 @@ chrome.tabs.onActivated.addListener((activeInfo) => {
   const currentTabWindow = activeInfo.windowId.toString();
   const activationTime = getCurrentTime();
 
-  console.log('-- CHANGE ------------------ FROM: ' + previousTab + '.' + previousTabWindow + '    TO: ' + currentTab + '.' + currentTabWindow);
+  console.log('-- CHANGE VIEW ------------- FROM: ' + previousTab + '.' + previousTabWindow + '    TO: ' + currentTab + '.' + currentTabWindow);
 
   // Update our historical list of active tabs. Useful for times like now!
   activeTabList.push({"windowId": currentTabWindow, "tabId": currentTab});
@@ -338,7 +353,7 @@ chrome.tabs.onActivated.addListener((activeInfo) => {
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   if (changeInfo.status == 'complete') {
 
-    console.log('-- onUpdated---------------------' + changeInfo.status);
+    console.log('-- NAVIGATION -------------------' + changeInfo.status);
 
     const list = [
       storage_get().then(storage_find.bind(null, tabId.toString())),
