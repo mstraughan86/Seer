@@ -251,8 +251,9 @@ chrome.tabs.onCreated.addListener(function (tab) {
         return Promise.resolve(tree);
       })
       .then(storage_set)
-      .then(() => {console.log('Finished Creating Tabs');});
-  });
+      .then(() => {console.log('Finished Creating Tabs');})
+      .catch(console.log.bind(console));
+  }).catch(console.log.bind(console));
 
   //TODO:7/28 CLEAN UP THIS CONSOLE OUT with proper messaing
   ////BELOW IS CODE FOR TAB CREATION TRACKING PURPOSES.
@@ -292,7 +293,8 @@ chrome.tabs.onRemoved.addListener((tabId, removeInfo) => {
       return Promise.resolve(tree);
     })
     .then(storage_set)
-    .then(() => {console.log('Finished Closing Tabs');});
+    .then(() => {console.log('Finished Closing Tabs');})
+    .catch(console.log.bind(console));
 });
 
 // We are changing tab focus!
@@ -326,7 +328,8 @@ chrome.tabs.onActivated.addListener((activeInfo) => {
       return Promise.resolve(tree);
     })
     .then(storage_set)
-    .then(() => {console.log('Finished updating Previous+Activated Tab');});
+    .then(() => {console.log('Finished updating Previous+Activated Tab');})
+    .catch(console.log.bind(console));
 });
 
 // Log every navigation into its tab!
@@ -354,7 +357,8 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 
       storage_set(tree)
         .then(() => {console.log('Finished Saving Navigation');})
-    });
+        .catch(console.log.bind(console));
+    }).catch(console.log.bind(console));
 
   }
 });
