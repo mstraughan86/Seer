@@ -2,12 +2,10 @@ The Road to MVP
 ---------------
 What do I need to accomplish to reach Minimum Viable Product?
 
-
-- ...
-- ...
-- Create Button that will open up a new page.
-- Display List of Objects
-- Display Tree
+- Create Button that will open up a new page or a modal
+- Display List of Objects on that page
+- Display Tree of the objects
+- Display Animated Tree because they are pretty
 
 
 
