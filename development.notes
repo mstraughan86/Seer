@@ -7,6 +7,17 @@ What do I need to accomplish to reach Minimum Viable Product?
 - Display Tree of the objects
 - Display Animated Tree because they are pretty
 
+https://ux.stackexchange.com/questions/90336/whats-the-difference-between-a-modal-popup-popover-and-lightbox?answertab=active#tab-top
+https://stackoverflow.com/questions/10340481/popup-window-in-chrome-extension
+https://stackoverflow.com/questions/14423923/chrome-extension-modal-dialog-or-other-solution-to-notify-users
+https://stackoverflow.com/questions/32113357/creating-an-html-dialog-pop-up-in-chrome-extension
+https://developer.chrome.com/extensions/activeTab
+https://developer.chrome.com/extensions/browserAction
+https://developer.chrome.com/extensions/content_scripts
+https://developer.chrome.com/extensions/commands
+
+Current plan is to re-activate the browserAction listener, have it either create a modal or a new window.
+Continue development in the new window, to display a list of objects, have those objects link to display the tree data.
 
 
 
